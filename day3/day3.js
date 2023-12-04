@@ -41,18 +41,41 @@ const findNumber = (line, index) => {
       } else break;
     } 
   }
-
-  console.log(nb.join(''))
-
   return [line, nb.join('')];
 }
 
+
+const partTwo = (input) => {
+  let nbs = []
+  input.forEach((line, index) => {
+    for (let s in line) {
+      if (line.charAt(s) === '*') {
+        const gear = [];
+
+        // find numbers near "*"
+        directions.forEach((dir) => {
+          const line_dir = input[index + dir[0]]
+          if (line_dir) {
+            const dir_col = Number(s) + dir[1];
+            if ((dir_col >= 0) && (dir_col < line_dir.length) && !isNaN(parseInt(line_dir.charAt(dir_col), 10))) {
+              const result = findNumber(line_dir, dir_col);
+              gear.push(result[1])
+              input[index + dir[0]] = result[0]
+            }
+          }
+        })
+
+        if (gear.length >= 2) nbs.push(gear.reduce((a,b) => Number(a)*Number(b)))
+      }
+    }
+  })
+  console.log(nbs.reduce((a,b) => Number(a) + Number(b)));
+}
 
 const partOne = (input) => {
   let nbs = [];
 
   input.forEach((line, index) => {
-    console.log("\n" + line)
     for (let s in line) {
 
       if (line.charAt(s) !== '.' && isNaN(line.charAt(s))) {
@@ -78,5 +101,5 @@ const partOne = (input) => {
 
 readInputByLines("/day3/input.txt")
   .then((input) => {
-    partOne(input)
+    partTwo(input)
   })
