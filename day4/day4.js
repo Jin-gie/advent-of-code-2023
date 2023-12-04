@@ -1,4 +1,5 @@
 // Star 1 answer : 19855
+// Star 2 answer : 10378710
 
 const getCardsWNS = (input) => {
   return(

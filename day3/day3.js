@@ -54,9 +54,8 @@ const partOne = (input) => {
   input.forEach((line, index) => {
     console.log("\n" + line)
     for (let s in line) {
-      const char = line.charAt(s)
 
-      if (symbols.indexOf(char) >= 0) {
+      if (line.charAt(s) !== '.' && isNaN(line.charAt(s))) {
         directions.forEach((dir) => {
           // find line if it exists
           const line_dir = input[index + dir[0]]
