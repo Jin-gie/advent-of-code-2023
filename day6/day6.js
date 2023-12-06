@@ -22,7 +22,21 @@ const partOne = (input) => {
   )
 }
 
+const partTwo = (input) => {
+  const inputs = input.map(el => {return el.split(' ').filter((i) => i !== '').slice(1).join('')})
+
+  let count = 0;
+  for (let i = 1; i < Number(inputs[0]); i++) {
+      if (i*(Number(inputs[0])-i) > Number(inputs[1])) count++
+  }
+  
+  return (
+    count
+  )
+}
+
 readInputByLines("/day6/input.txt")
   .then((input) => {
-    console.log(partOne(input))
+    // console.log(partOne(input))
+    console.log(partTwo(input))
   })
