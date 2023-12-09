@@ -1,4 +1,5 @@
 // Result part one: 1743490457
+// Result part two: 1053
 
 const isLineFullZeros = (line) => {
   return(
