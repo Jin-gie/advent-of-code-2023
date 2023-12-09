@@ -40,7 +40,25 @@ const partOne = (input) => {
   );
 }
 
+const partTwo = (input) => {
+  return (
+    input.map((line) => {
+      const tmp = fillToZeros(line);
+
+      let extra_nb = 0;
+
+      tmp.reverse().forEach((line) => {
+        extra_nb = line[0] - extra_nb
+      })
+
+
+      return extra_nb
+    })
+  ).reduce((a,b) => a+b)
+}
+
 readInputByLines("/day9/input.txt")
   .then((input) => {
-    partOne(input)
+    // partOne(input)
+    console.log(partTwo(input));
   })
