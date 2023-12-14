@@ -25,10 +25,19 @@ const partOne = (input) => {
 const partTwo = (input) => {
   const inputs = input.map(el => {return el.split(' ').filter((i) => i !== '').slice(1).join('')})
 
+  const a = 1
+  const b = -inputs[0]
+  const c = -inputs[1]
+
+  const delta1 = (-b - Math.sqrt(Math.pow(b,2) - (4*a*c)))/ (2*a)
+  const delta2 = (-b + Math.sqrt(Math.pow(b,2) - (4*a*c)))/ (2*a)
+
+  console.log(delta2-delta1)
+
   let count = 0;
-  for (let i = 1; i < Number(inputs[0]); i++) {
-      if (i*(Number(inputs[0])-i) > Number(inputs[1])) count++
-  }
+  // for (let i = 1; i < Number(inputs[0]); i++) {
+  //     if (i*(Number(inputs[0])-i) > Number(inputs[1])) count++
+  // }
   
   return (
     count
